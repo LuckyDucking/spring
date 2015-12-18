@@ -1,12 +1,14 @@
 package web;
 
 import dao.User;
+import mybatis.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import service.MapperService;
 
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
@@ -24,20 +26,25 @@ public class LoginController {
     {
         return "login";
     }
-//    @RequestMapping(value = "/loginCheck.html")
-//    public ModelAndView loginCheck(HttpServletRequest request,LoginCommand loginCommand)
-//    {
-//        boolean isValidUser=MapperService.hasMatchUser(loginCommand.getUserName(),loginCommand.getPassword());
-//        if(!isValidUser)
-//        {
-//            return new ModelAndView("login","error","用户名或者密码错误");
-//        }else
-//        {
-//            User user=MapperService.findUserByName(loginCommand.getUserName());
-//            user.setLastIp(request.getLocalAddr());
-//            user.setLastVist(new Date());
-//
-//        }
-//
-//    }
+    @RequestMapping(value = "/loginCheck.html")
+    public ModelAndView loginCheck(HttpServletRequest request,LoginCommand loginCommand)
+    {
+        User user=new User();
+        user.setUser_name(loginCommand.getUserName());
+        user.setPassword(loginCommand.getPassword());
+        User isValidUser=MapperService.hasMatchUser(user);
+        if(isValidUser.getUser_id()==0)
+        {
+            return new ModelAndView("login","error","用户名或者密码错误");
+        }else
+        {
+            User userResult=MapperService.findUserByName(loginCommand.getUserName());
+            userResult.setLast_ip(request.getLocalAddr());
+            userResult.setLast_vist(new Date());
+            System.out.println(userResult.toString());
+            Mapperservice.loginSuccess(userResult);
+            request.getSession().setAttribute("user",user);
+            return new ModelAndView("main");
+        }
+    }
 }

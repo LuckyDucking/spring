@@ -7,35 +7,36 @@ import mybatis.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * Created by huangyazhou on 2015/12/16.
  */
 @Service
 public class MapperService {
     @Autowired
-    private UserMapper userMapper;
+    private static UserMapper userMapper;
     @Autowired
     private LoginMapper loginMapper;
 
-    public  boolean hasMatchUser(User user)
+    public static User hasMatchUser(User user)
     {
-        int matchCount=userMapper.getMatchCount(user);
-        System.out.println("MatchCount="+matchCount+user.toString());
-        return matchCount>0;
+        User matchCount=userMapper.UserMatch(user);
+         return    matchCount ;
     }
 
-    public User findUserByName(String userName)
+    public static User findUserByName(String userName)
     {
         User user=userMapper.selectUserByName(userName);
          return user;
     }
-    public Login loginSuccess(User user)
+    public void loginSuccess(User user)
     {
         Login login=new Login();
-        login.setUserId(user.getUser_id());
+        login.setUser_id(user.getUser_id());
         login.setIp(user.getLast_ip());
-        login.setLoginDatatime(user.getLast_vist());
-        return login;
-     }
+        login.setLogin_datetime(user.getLast_vist());
+        loginMapper.insertLogin(login);
+      }
 
 }

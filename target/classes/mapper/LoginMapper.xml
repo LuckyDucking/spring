@@ -18,4 +18,8 @@
             <if test="login_datetime!=null">login_datetime=#{login_datetime}</if>
         </where>
     </select>
+    <insert id="insertLogin" parameterType="Login" useGeneratedKeys="true" keyProperty="login_log_id">
+       INSERT into t_login_log (user_id,ip,login_datetime)
+       VALUES ( #{user_id},#{ip},#{login_datetime})
+    </insert>
 </mapper>

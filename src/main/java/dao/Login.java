@@ -6,25 +6,25 @@ import java.util.Date;
  * Created by huangyazhou on 2015/12/17.
  */
 public class Login {
-    private int loginLogId;
-    private int userId;
+    private int login_log_id;
+    private int user_id;
     private String ip;
-    private Date loginDatatime;
+    private Date login_datetime;
 
-    public int getLoginLogId() {
-        return loginLogId;
+    public int getLogin_log_id() {
+        return login_log_id;
     }
 
-    public void setLoginLogId(int loginLogId) {
-        this.loginLogId = loginLogId;
+    public void setLogin_log_id(int login_log_id) {
+        this.login_log_id = login_log_id;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getIp() {
@@ -35,21 +35,21 @@ public class Login {
         this.ip = ip;
     }
 
-    public Date getLoginDatatime() {
-        return loginDatatime;
+    public Date getLogin_datetime() {
+        return login_datetime;
     }
 
-    public void setLoginDatatime(Date loginDatatime) {
-        this.loginDatatime = loginDatatime;
+    public void setLogin_datetime(Date login_datetime) {
+        this.login_datetime = login_datetime;
     }
 
     @Override
     public String toString() {
         return "Login{" +
-                "loginLogId=" + loginLogId +
-                ", userId=" + userId +
+                "login_log_id=" + login_log_id +
+                ", user_id=" + user_id +
                 ", ip='" + ip + '\'' +
-                ", loginDatatime=" + loginDatatime +
+                ", login_datetime=" + login_datetime +
                 '}';
     }
 }

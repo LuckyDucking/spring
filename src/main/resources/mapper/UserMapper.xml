@@ -43,8 +43,8 @@
             (#{item.user_id},#{item.user_name},#{item.password},#{item.last_visit},#{item.last_ip})
         </foreach>
     </insert>
-    <select id="getMatchCount" parameterType="User" resultType="int">
-        select count(*) from t_user where user_name=#{user_name} and password=#{password}
+    <select id="UserMatch" parameterType="User" resultType="User">
+        select * from t_user where user_name=#{user_name} and password=#{password}
     </select>
 
 </mapper>
