@@ -3,6 +3,7 @@ package web;
 import dao.User;
 import mybatis.LoginMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,7 +20,7 @@ import java.util.Date;
 @RequestMapping(value = "/admin")
 public class LoginController {
     @Autowired
-    private MapperService Mapperservice;
+    private MapperService mapperservice;
 
     @RequestMapping(value = "/login.html")
     public String loginPage()
@@ -32,17 +33,18 @@ public class LoginController {
         User user=new User();
         user.setUser_name(loginCommand.getUserName());
         user.setPassword(loginCommand.getPassword());
-        User isValidUser=MapperService.hasMatchUser(user);
+        System.out.println(user.toString());
+        User isValidUser=mapperservice.hasMatchUser(user);
         if(isValidUser.getUser_id()==0)
         {
             return new ModelAndView("login","error","用户名或者密码错误");
         }else
         {
-            User userResult=MapperService.findUserByName(loginCommand.getUserName());
+            User userResult=mapperservice.findUserByName(loginCommand.getUserName());
             userResult.setLast_ip(request.getLocalAddr());
             userResult.setLast_vist(new Date());
             System.out.println(userResult.toString());
-            Mapperservice.loginSuccess(userResult);
+            mapperservice.loginSuccess(userResult);
             request.getSession().setAttribute("user",user);
             return new ModelAndView("main");
         }

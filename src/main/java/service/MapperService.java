@@ -13,19 +13,19 @@ import java.util.Date;
  * Created by huangyazhou on 2015/12/16.
  */
 @Service
-public class MapperService {
+public   class MapperService  {
     @Autowired
-    private static UserMapper userMapper;
+    private UserMapper userMapper;
     @Autowired
     private LoginMapper loginMapper;
 
-    public static User hasMatchUser(User user)
+    public   User hasMatchUser(User user)
     {
         User matchCount=userMapper.UserMatch(user);
          return    matchCount ;
     }
 
-    public static User findUserByName(String userName)
+    public   User findUserByName(String userName)
     {
         User user=userMapper.selectUserByName(userName);
          return user;

@@ -8,6 +8,6 @@
     <title>景区网站管理</title>
 </head>
 <body>
-${user.userName},欢迎您进入景区网站后台管理！
+${user.user_name},欢迎您进入景区网站后台管理！
 </body>
 </html>

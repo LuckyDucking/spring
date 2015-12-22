@@ -37,8 +37,7 @@
     <bean id="mybatisConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="mybatis" />
      </bean>
-    <bean id="MapperService" class="service.MapperService"/>
-    <!--<bean id="UserMapperBean" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
+      <!--<bean id="UserMapperBean" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
         <!--<property name="mapperInterface" value="mybatis.UserMapper"></property>-->
         <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>-->
     <!--</bean>-->

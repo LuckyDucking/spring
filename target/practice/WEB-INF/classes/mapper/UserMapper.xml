@@ -5,11 +5,11 @@
     <cache eviction="LRU" flushInterval="60000" size="1024" readOnly="false"/>
     <!--<sql id="UserColumns"  >select A.user_id,A.user_name,A.password,A.last_vist,A.last_ip from t_user A</sql>-->
     <resultMap id="userRuseltMap" type="User">
-        <id     column="user_id"    property="userId"/>
-        <result column="user_name"  property="userName"/>
+        <id     column="user_id"    property="user_id"/>
+        <result column="user_name"  property="user_name"/>
         <result column="password"   property="password"/>
-        <result column="last_vist"  property="lastVist"/>
-        <result column="last_ip"    property="lastIp"/>
+        <result column="last_vist"  property="last_visit"/>
+        <result column="last_ip"    property="last_ip"/>
     </resultMap>
 
     <select id="selectUser"   parameterType="User" resultMap="userRuseltMap" >

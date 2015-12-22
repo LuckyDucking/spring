@@ -12,4 +12,8 @@
         <typeAlias alias="User" type="dao.User"/>
         <typeAlias alias="Login" type="dao.Login"/>
     </typeAliases>
+    <!--<mappers>-->
+        <!--<mapper resource="mybatis.UserMapper"/>-->
+        <!--<mapper resource="mybatis.LoginMapper"/>-->
+    <!--</mappers>-->
 </configuration>
